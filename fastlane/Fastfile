@@ -54,11 +54,12 @@ lane :nightly do
     scheme: "PlayCover",
     output_directory: "output",
     output_name: "PlayCover",
-    export_method: "development",
-    codesigning_identity: "-",
+    skip_codesigning: true,
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
-    xcargs: "FASTLANE=1",
+    # CHANGE IS HERE: Changed ALLOWED=NO to ALLOWED=YES
+    # We keep IDENTITY="-" to ensure it uses Ad-Hoc signing (no cert required)
+    xcargs: "FASTLANE=1 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=\"-\"",
     )
 end
 
