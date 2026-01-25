@@ -50,10 +50,6 @@ lane :nightly do
   end
   carthage(use_xcframeworks: true)
   
-  # 修复说明：
-  # 1. 移除了 skip_codesigning: true，因为它会干扰脚本中的签名过程。
-  # 2. 添加了 skip_profile_detection: true，避免 fastlane 报错找不到 Profile。
-  # 3. xcargs 强制配置 Ad-Hoc 签名 ("-")，并设置为 Manual 模式，允许构建阶段进行签名。
   build_mac_app(
     configuration: "Nightly",
     scheme: "PlayCover",
@@ -61,9 +57,17 @@ lane :nightly do
     output_name: "PlayCover",
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
-    skip_profile_detection: true, 
-    export_method: "development", # 配合 skip_profile_detection 防止报错
-    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY=\"-\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER=\"\"",
+    
+    # 关键设置 1：跳过 Profile 检测，防止 Fastlane 因为找不到证书而报错
+    skip_profile_detection: true,
+    
+    # 关键设置 2：明确指定 gym 使用 Ad-Hoc 签名
+    codesigning_identity: "-",
+    
+    # 关键设置 3：通过 xcargs 强制覆盖 Xcode 的签名变量
+    # 我们只设置 Identity 为 "-"，并允许未签名的构建通过验证 (REQUIRED=NO)
+    # 移除了 CODE_SIGN_STYLE 等可能导致冲突的参数
+    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY=\"-\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=YES",
     )
 end
 
