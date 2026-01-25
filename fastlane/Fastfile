@@ -1,17 +1,5 @@
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
 
 default_platform(:mac)
 
@@ -58,7 +46,7 @@ lane :nightly do
     skip_package_pkg: true,
     skip_profile_detection: true,
     skip_codesigning: true,
-    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO SKIP_SPARKLE_CODESIGN=YES",
+    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO",
   )
 end
 
@@ -77,7 +65,6 @@ lane :notarize_dmg do |options|
     api_key_path: "apikey.json",
     bundle_id: bundle_id,
     print_log: true,
-    # verbose: true,
   )
 end
 
