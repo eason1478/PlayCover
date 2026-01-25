@@ -55,7 +55,7 @@ lane :nightly do
     output_directory: "output",
     output_name: "PlayCover",
     export_method: "development",
-    signing_identity: "-",
+    codesigning_identity: "-",
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
     xcargs: "FASTLANE=1",
