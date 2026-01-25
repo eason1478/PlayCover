@@ -27,8 +27,8 @@ jobs:
           brew install graphicsmagick imagemagick swiftlint
           npm install -g pnpm
           pnpm setup
-          export PNPM_HOME="$HOME/.local/share/pnpm"
-          export PATH="$PNPM_HOME:$PATH"
+          echo "$HOME/.local/share/pnpm" >> $GITHUB_ENV
+          echo "$HOME/.local/share/pnpm/bin" >> $GITHUB_PATH
           gem install fastlane
           bundle install
           pip install setuptools
