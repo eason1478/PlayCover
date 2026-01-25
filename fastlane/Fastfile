@@ -49,17 +49,21 @@ lane :nightly do
     sh("carthage", "update", "--use-xcframeworks")
   end
   carthage(use_xcframeworks: true)
+  
+  # 修复说明：
+  # 1. 移除了 skip_codesigning: true，因为它会干扰脚本中的签名过程。
+  # 2. 添加了 skip_profile_detection: true，避免 fastlane 报错找不到 Profile。
+  # 3. xcargs 强制配置 Ad-Hoc 签名 ("-")，并设置为 Manual 模式，允许构建阶段进行签名。
   build_mac_app(
     configuration: "Nightly",
     scheme: "PlayCover",
     output_directory: "output",
     output_name: "PlayCover",
-    skip_codesigning: true,
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
-    # CHANGE IS HERE: Changed ALLOWED=NO to ALLOWED=YES
-    # We keep IDENTITY="-" to ensure it uses Ad-Hoc signing (no cert required)
-    xcargs: "FASTLANE=1 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=\"-\"",
+    skip_profile_detection: true, 
+    export_method: "development", # 配合 skip_profile_detection 防止报错
+    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY=\"-\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER=\"\"",
     )
 end
 
