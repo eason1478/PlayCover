@@ -45,7 +45,6 @@ end
 
 lane :nightly do
   setup_ci if ENV['CI']
-  match(type: "developer_id", readonly: true)
   Dir.chdir("..") do
     sh("carthage", "update", "--use-xcframeworks")
   end
@@ -55,7 +54,8 @@ lane :nightly do
     scheme: "PlayCover",
     output_directory: "output",
     output_name: "PlayCover",
-    export_method: "developer-id",
+    export_method: "development",
+    signing_identity: "-",
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
     xcargs: "FASTLANE=1",
