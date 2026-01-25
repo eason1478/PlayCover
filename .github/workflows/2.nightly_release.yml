@@ -43,8 +43,16 @@ jobs:
       - name: Create DMG
         shell: bash
         run: |
-          create-dmg ./output/PlayCover.app ./output
-          mv ./output/*.dmg ./output/PlayCover_nightly_${{ github.run_number }}.dmg
+          create-dmg \
+            --volname "PlayCover Nightly" \
+            --window-pos 200 120 \
+            --window-size 800 400 \
+            --icon-size 100 \
+            --icon "PlayCover.app" 200 190 \
+            --hide-extension "PlayCover.app" \
+            --app-drop-link 600 185 \
+            "./output/PlayCover_nightly_${{ github.run_number }}.dmg" \
+            "./output/PlayCover.app"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
