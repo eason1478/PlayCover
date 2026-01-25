@@ -24,15 +24,10 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          brew install graphicsmagick imagemagick swiftlint
-          npm install -g pnpm
-          pnpm setup
-          echo "$HOME/.local/share/pnpm" >> $GITHUB_ENV
-          echo "$HOME/.local/share/pnpm/bin" >> $GITHUB_PATH
+          brew install graphicsmagick imagemagick swiftlint create-dmg
           gem install fastlane
           bundle install
           pip install setuptools
-          pnpm install --global https://github.com/PlayCover/create-dmg
 
       - name: Set build number
         shell: bash
