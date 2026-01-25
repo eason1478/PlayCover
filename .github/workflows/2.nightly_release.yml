@@ -1,8 +1,15 @@
 name: Build nightly release
 on:
   workflow_dispatch:
+    inputs:
+      release_name:
+        description: 'Release name (optional)'
+        required: false
+        default: 'Nightly'
   schedule:
     - cron: "30 19 * * *"
+permissions:
+  contents: write
 env:
   CI: true
 jobs:
@@ -21,7 +28,7 @@ jobs:
           gem install fastlane
           bundle install
           pip install setuptools
-          npm install --global https://github.com/PlayCover/create-dmg
+          pnpm install --global https://github.com/PlayCover/create-dmg
 
       - name: Set build number
         shell: bash
