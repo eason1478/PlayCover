@@ -24,7 +24,6 @@ platform :mac do
   end
 end
 
-
 lane :release do
   setup_ci if ENV['CI']
   match(type: "developer_id", readonly: true)
@@ -40,7 +39,7 @@ lane :release do
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
     xcargs: "FASTLANE=1",
-    )
+  )
 end
 
 lane :nightly do
@@ -57,18 +56,10 @@ lane :nightly do
     output_name: "PlayCover",
     destination: "generic/platform=macOS",
     skip_package_pkg: true,
-    
-    # 关键设置 1：跳过 Profile 检测，防止 Fastlane 因为找不到证书而报错
     skip_profile_detection: true,
-    
-    # 关键设置 2：明确指定 gym 使用 Ad-Hoc 签名
-    codesigning_identity: "-",
-    
-    # 关键设置 3：通过 xcargs 强制覆盖 Xcode 的签名变量
-    # 我们只设置 Identity 为 "-"，并允许未签名的构建通过验证 (REQUIRED=NO)
-    # 移除了 CODE_SIGN_STYLE 等可能导致冲突的参数
-    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY=\"-\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=YES",
-    )
+    skip_codesigning: true,
+    xcargs: "FASTLANE=1 CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO SKIP_SPARKLE_CODESIGN=YES",
+  )
 end
 
 lane :notarize_app do
