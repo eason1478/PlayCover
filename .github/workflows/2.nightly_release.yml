@@ -26,6 +26,9 @@ jobs:
         run: |
           brew install graphicsmagick imagemagick swiftlint
           npm install -g pnpm
+          pnpm setup
+          export PNPM_HOME="$HOME/.local/share/pnpm"
+          export PATH="$PNPM_HOME:$PATH"
           gem install fastlane
           bundle install
           pip install setuptools
