@@ -14,6 +14,12 @@
 "alert.errorImportKm" = "导入过程中出现问题！";
 
 /* (No Comment) */
+"alert.errorRenameKm" = "重命名过程中出现问题！";
+
+/* (No Comment) */
+"alert.errorKmCreated" = "创建过程中出现问题！";
+
+/* (No Comment) */
 "alert.kmImported" = "键盘映射布局已导入！";
 
 /* (No Comment) */
@@ -84,6 +90,9 @@
 
 /* (No Comment) */
 "playapp.exportKm" = "导出键盘映射布局";
+
+/* (No Comment) */
+"playapp.emptyKm" = "创建新布局";
 
 /* (No Comment) */
 "playapp.importKm" = "导入键盘映射布局";
@@ -195,6 +204,7 @@
 "error.appProhibited" = "通过 PlayCover 使用这个应用程序很可能会导致帐号被封停！";
 "settings.title" = "%@ 设定";
 "playapp.exportKmPanel.fieldLabel" = "PlayMap 名称：";
+"playapp.keymap" = "查看键盘映射";
 "sidebar.appLibrary" = "App 库";
 "sidebar.ipaLibrary" = "IPA 资源库";
 "alert.moveAppToApplications.title" = "是否移动至应用程序文件夹？";
@@ -210,7 +220,10 @@
 "settings.picker.adaptiveRes.0" = "默认分辨率";
 "settings.picker.adaptiveRes.1" = "自动（基于显示器分辨率）";
 "settings.picker.adaptiveRes.5" = "自定义";
+"settings.picker.adaptiveRes.6" = "可调整大小";
 "settings.picker.aspectRatio" = "长宽比：";
+"settings.picker.aspectRatio.free" = "自由视口";
+"settings.picker.aspectRatio.custom" = "自定义视口";
 "settings.toggle.disableDisplaySleep.help" = "在该应用运行时防止显示屏关闭";
 "settings.toggle.jbBypass.help" = "尝试绕过某些游戏的越狱检测 （无法保证能够一直正常工作）";
 "settings.info.displayName" = "显示名称:";
@@ -246,7 +259,9 @@
 "preferences.button.moveSourceUp" = "上移来源";
 "preferences.button.moveSourceDown" = "下移来源";
 "preferences.popover.valid" = "链接有效";
+"preferences.popover.valid.keymap" = "名称有效";
 "preferences.popover.badurl" = "链接无效!";
+"preferences.popover.malformed.keymap" = "名称格式错误";
 "preferences.popover.badjson" = "JSON 无效或未找到!";
 "preferences.textfield.url" = "来源 URL 链接...";
 "playapp.download.downloading" = "下载中";
@@ -267,6 +282,7 @@
 "preferences.tab.install" = "安装";
 "preferences.toggle.showInstallPopup" = "显示安装 PlayTools 弹窗";
 "preferences.toggle.alwaysInstallPlayTools" = "总是安装 PlayTools";
+"preferences.toggle.showAppStorePopup" = "如果应用有官方 App Store 版本时显示提示";
 "alert.install.injectPlayTools" = "注入 PlayTools";
 "button.Yes" = "是";
 "button.No" = "否";
@@ -327,8 +343,11 @@
 "playapp.clearPlayChain" = "清除 PlayChain 数据";
 "playapp.importIPA" = "导入 IPA";
 "ipaLibrary.noNetworkConnection.required" = "连接网络以查看 IPA Library";
-"preferences.popover.duplicate" = "复制链接";
+"preferences.popover.duplicate" = "重复链接";
+"preferences.popover.duplicate.keymap" = "重复名称";
 "alert.app.clearPlayChain" = "所有 PlayChain 数据将被清除。您可能需要重新登录 APP。您想要继续吗?";
+"settings.toggle.hideTitleBar" = "隐藏标题栏";
+"settings.toggle.floatingWindow" = "浮动窗口";
 "settings.highResolution" = "高画质可能会导致闪退";
 "settings.picker.windowFix" = "修复窗口化显示问题";
 "settings.picker.windowFix.help" = "启用窗口化修复也许可以让你的程序正常显示";
@@ -374,7 +393,11 @@
 "settings.info.alias" = "别名:";
 "settings.toggle.enableScrollWheel.help" = "在按键映射启用滚轮";
 "settings.toggle.iosFrameworks.help" = "将系统 ios 库添加到应用程序中。已知可修复某些应用程序找不到 ios 框架的问题";
+"settings.toggle.checkMicPermissionSync" = "同步检查麦克风权限";
+"settings.toggle.checkMicPermissionSync.help" = "强制麦克风权限检查同步执行。已知可修复某些应用抱怨麦克风权限未授予的问题";
 "settings.toggle.enableScrollWheel" = "启用滚轮";
+"settings.toggle.disableBuiltinMouse" = "禁用内置鼠标支持";
+"settings.toggle.disableBuiltinMouse.help" = "禁用应用的内置鼠标支持以避免点击冲突";
 "ipaLibrary.info.notAvailable" = "此应用链接不可用";
 "ipaLibrary.info" = "应用信息";
 "ipaLibrary.info.checksum.none" = "未提供";
@@ -386,3 +409,10 @@
 "ipaLibrary.AlphabeticalSort" = "按字母顺序排列应用来源";
 "alert.install.anyway" = "仍然安装";
 "alert.open.appstore" = "打开 Mac App Store";
+"alert.appstore" = "可使用 macOS 版本";
+"alert.quota.limit" = "已达到配额限制。可能需要等待 24 小时后再次下载此文件";
+"alert.notSpace" = "磁盘空间不足";
+"alert.corrupted" = "文件可能已损坏，请重新尝试下载";
+"alert.start.anyway" = "仍然启动";
+"alert.version.title" = "发现新版本";
+"alert.version.text" = "%@ 有新版本可用。您是否想要下载？";
